@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundary Service</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="Laundary/CSS/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <header id="home" >
+            <nav class="main-nav">
+                <div class="logo">
+                    <img data-aos="zoom-in" data-aos-duration="1000"  src="Laundary/Img/laundary-logo1.png" alt="logo-img">
+                </div>
+                <div>
+                    <ul class="navlinks">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#service">Services</a></li>
+                        <li><a href="#about-us">About Us</a></li>
+                        <li><a href="#contact-us">Contact Us</a></li>
+                    </ul>
+                </div>
+                <a class="username" href="#">UesrName</a>
+            </nav>
+    </header>
+    <section class="main-section" data-aos="fade-in" data-aos-duration="2000">
+            <div class="left-section"> 
+                <h1>Revitalize Your <br>
+                 Clothes with Expert</h1>
+                <span class="left-highlight">Laundary Services!</span>
+                <p>
+                From premium dry cleaning to swift wash and fold, we deliver safe and
+                convenience. Schedule a pickup and rediscover the freshness of your clothes today!
+                </p>
+                <button class="btn primary-btn" onclick="location.href='#service'"><ion-icon name="storefront-outline"></ion-icon> Book a service today!</button>
+            </div>
+            <div class="right-section">
+                <img data-aos="zoom-in" data-aos-duration="1000"  src="Laundary/Img/laundary-image.png" alt="machine-image">
+            </div>
+        </section>
+        <section class="overview-section" data-aos="fade-in" data-aos-duration="2000">
+            <div class="overview">
+                <span>Our Achievements</span>
+                <div class="work-stats">
+                    <div>15+</div>
+                    <p id="p1">Laundary Services</p>
+                </div>
+                <div class="work-stats">
+                    <div>240+</div>
+                    <p id="p2">Happy Customers</p>
+                </div>
+                <div class="work-stats">
+                    <div>2+ Yrs</div>
+                    <p id="p3">Experience</p>
+                </div>
+            </div>
+    </section>
+    <section class="cart-section " id="service" data-aos="fade-in" data-aos-duration="2000">
+        <div class="main-div">
+            <div class="left-cart">
+                <h3>Our Services</h3>
+                <p id="left-p1">Click On The Add To Cart Button To Add The Services To Your Cart</p>
+
+                <ul class="item-list" id="serviceList">
+                    <li>
+                        <span>🧥 Dry Cleaning</span>
+                        <span class="price">₹200.00</span>
+                        <button class="add-btn">Add Item</button>
+                    </li>
+                    <li>
+                        <span>🧺 Wash & Fold</span>
+                        <span class="price">₹100.00</span>
+                        <button class="add-btn">Add Item</button>
+                    </li>
+                    <li>
+                        <span>🧴 Ironing</span>
+                        <span class="price">₹30.00</span>
+                        <button class="add-btn">Add Item</button>
+                    </li>
+                    <li>
+                        <span>✨ Stain Removal</span>
+                        <span class="price">₹500.00</span>
+                        <button class="add-btn">Add Item</button>
+                    </li>
+                    <li>
+                        <span >🥼 Leather & Suede Cleaning</span>
+                        <span class="price">₹999.00</span>
+                        <button class="add-btn">Add Item</button>
+                    </li>
+                    <li>
+                        <span>👗 Wedding Dress Cleaning</span>
+                        <span class="price">₹2800.00</span>
+                        <button  class="add-btn">Add Item</button>
+                    </li>
+                </ul>
+
+                <p  id="last-text">ⓘ Add the Items to the cart and book now</p>
+
+            </div>
+
+            <div class="right-cart">
+                <div class="item-headings">
+                    <h3>Added Items</h3>
+                </div>
+                <div class="item-div">
+                    <table class="table-cart">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th id="th-ser">Service</th>
+                                <th id="th-pr">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="3" class="table-text">
+                                    &#9432;<br>No items added
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="amount-div">Total Amount <span>0</span> </div>  
+                </div>
+            
+                
+
+                <div class="form " data-aos="zoom-out" data-aos-duration="1000">
+                        <h3>Book Now</h3>
+                        <form action="">
+                            <label for="username">Full Name</label><br>
+                            <input type="text" name="email" id="uesrname" placeholder="Your Name"><br>
+                            <label for="email">Email</label><br>
+                            <input type="email" id="email" name="email" placeholder="email@gmail.com">
+                            <label for="phone">Phone Number</label><br>
+                            <input type="tel" id="phone" name="phone" placeholder="000000000">
+                            <button>Book Now</button>
+                            <span id="formMessage"></span>
+
+                        </form>
+                </div>
+                
+
+            </div>
+        </div>
+    </section>
+    <section class="desc-section"  data-aos="fade-in" data-aos-duration="2000">
+        <div class="desc-container">
+            <div class="desc-card">
+                <img data-aos="zoom-in" data-aos-duration="1000"  class="desc-img" src="Laundary/Img/premium service.png" alt="premium-serivce">
+                <h4>Premium Services</h4>
+                <p>Elebate your wardrobe with our meticuluos dry cleaning, ensuring garments look and feel as good as new.</p>
+            </div>
+            
+            <div class="desc-card">
+                <img data-aos="zoom-in" data-aos-duration="1000" class="desc-img" src="Laundary/Img/quick support.png" alt="quick-support">
+                <h4>Quick Support</h4>
+                <p>We're committed to providing prompt to ensure your experince is smooth and worry free.</p>
+            </div>
+            <div class="desc-card">
+                <img data-aos="zoom-in" data-aos-duration="1000" class="desc-img1" src="Laundary/Img/delivery.png" alt="delivery">
+                <h4>Hassle Free Delivery</h4>
+                <p>Enjoy seamless service with our convenient pickup and delivery options, tailored to your schedule.</p>
+            </div>
+            <div class="desc-card">
+                <img data-aos="zoom-in" data-aos-duration="1000" class="desc-img1 " src="Laundary/Img/Affordable price.png" alt="affordable-price">
+                <h4>Affordable Prices</h4>
+                <p>Experience exceptional care without breaking the bank-our affordable prices make laundary day stress-free.</p>
+            </div>
+      </div>
+    </section>
+    <section class="subscription-scetion" data-aos="fade-in" data-aos-duration="2000">
+        <div class="sub-container">
+            <div class="form-sub">
+                <h3>Subscribe to our <br> newsletter.</h3>
+            </div>
+            <div class="form-sub1">
+                <form action="">
+                    <input type="text" class="name-input" placeholder="Full Name" >
+                    <input type="email" class="email-input" placeholder="Email">
+                    <button class="sub-btn">Subscribe</button>
+                    <span class="sub-message"></span>
+                </form>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer" id="about-us" data-aos="fade-in" data-aos-duration="2000">
+        <div class="foot-container">
+            <div class="about-div">
+                <img src="Laundary/Img/laundary-logo1.png" alt="logo-img">
+                <h4>About Us</h4>
+                <p>Laundary service company about us section that tells about ouy company.</p>
+            </div>
+            <div class="links" >
+                <h4>Important links</h4>
+                <ul class="links-a">
+                        <li><a href="#about us">About us</a></li>
+                        <li><a href="#contact-us">Contact us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Term of use <br>Refund policy</a></li>
+                </ul>
+            </div>
+            <div class="contact-us" id="contact-us">
+                <h4>Contact</h4>
+                <p>Laundary@gmail.com</p>
+                <p>+91 7003425467</p>
+            </div>
+            <div class="follow-link">
+                <h4>Follow Us</h4>
+                <ul class="follow-links">
+                    <li><ion-icon class="insta" name="logo-instagram"></ion-icon></li>
+                    <li><ion-icon class="fb" name="logo-facebook"></ion-icon></li>
+                    <li><ion-icon class="tw" name="logo-twitter"></ion-icon></li>
+                    <li><ion-icon class="yt" name="logo-youtube"></ion-icon></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script>
+        AOS.init();
+</script>
+    
+<script>
+    $(document).ready(function(){
+    // Add smooth scrolling to all links
+    $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+    });
+    });
+</script>
+
+<script src="Laundary/js/script.js"></script>
+
+</body>
+</html>
