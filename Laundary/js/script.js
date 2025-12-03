@@ -1,3 +1,6 @@
+emailjs.init("YOUR_PUBLIC_KEY");
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const addButtons = document.querySelectorAll(".add-btn");
     const tableBody = document.querySelector(".table-cart tbody");
@@ -117,6 +120,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         msgBox.style.color = "green";
         msgBox.innerText = "Service booked successfully!";
+        setTimeout(() => {
+            msgBox.innerText = "";
+        }, 3000);
+
+        const params = {
+        user_name: nameInput.value,
+        user_email: emailInput.value,  
+        user_phone: phoneInput.value,
+        total_amount: total,
+        service_list: cart.map(item => item.service).join(", ")
+    };
+
+    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
+        .then(() => {
+            console.log("Email sent successfully");
+        })
+        .catch((error) => {
+            console.error("Email error:", error);
+        });
 
 
         cart = [];
@@ -162,6 +184,10 @@ document.querySelector(".sub-btn").addEventListener("click", function (event) {
 
     msg.innerText = "Thank you for subscribing!";
     msg.style.color = "white";
+    
+    setTimeout(() => {
+        msg.innerText = "";
+    }, 3000);
     
 
 
