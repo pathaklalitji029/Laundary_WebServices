@@ -1,7 +1,7 @@
-emailjs.init("YOUR_PUBLIC_KEY");
-
-
 document.addEventListener("DOMContentLoaded", () => {
+
+    emailjs.init("rDwb4pH9OWETiraDX");
+
     const addButtons = document.querySelectorAll(".add-btn");
     const tableBody = document.querySelector(".table-cart tbody");
     const totalAmountDiv = document.querySelector(".amount-div span");
@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let cart = [];
     let total = 0;
 
-   
     addButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
             const parent = btn.parentElement;
             const service = parent.querySelector("span").innerText;
-            const price = parseFloat(parent.querySelector(".price").innerText.replace("₹", ""));
-
+            const price = parseFloat(
+                parent.querySelector(".price").innerText.replace("₹", "")
+            );
 
             const index = cart.findIndex(item => item.service === service);
 
@@ -24,11 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 cart.splice(index, 1);
 
                 btn.innerText = "Add Item";
-                btn.style.background = "#2e9fff"; 
+                btn.style.background = "#2e9fff";
                 btn.style.color = "#fff";
-
             } else {
-            
                 cart.push({ service, price });
                 total += price;
 
@@ -41,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    
     function updateTable() {
         tableBody.innerHTML = "";
 
@@ -49,7 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
             tableBody.innerHTML = `
                 <tr>
                     <td colspan="3" class="table-text">ⓘ<br>No items added</td>
-                </tr>`;
+                </tr>
+            `;
             totalAmountDiv.innerText = "0";
             return;
         }
@@ -67,18 +65,17 @@ document.addEventListener("DOMContentLoaded", () => {
         totalAmountDiv.innerText = total;
     }
 
-
     const form = document.querySelector(".form form");
-    const nameInput = document.getElementById("uesrname");
+    const nameInput = document.getElementById("username");
     const emailInput = document.getElementById("email");
     const phoneInput = document.getElementById("phone");
     const bookBtn = form.querySelector("button");
 
-    const msgBox = document.createElement("p");
+    const msgBox = document.getElementById("formMessage");
     msgBox.style.marginTop = "8px";
     msgBox.style.fontSize = "0.6rem";
     msgBox.style.fontWeight = "600";
-    form.appendChild(msgBox);
+    
 
     function checkFormFilled() {
         if (
@@ -86,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             emailInput.value.trim() !== "" &&
             phoneInput.value.trim() !== ""
         ) {
-            bookBtn.style.background = "#2e9fff"; 
+            bookBtn.style.background = "#2e9fff";
             bookBtn.style.color = "#fff";
         } else {
             bookBtn.style.background = "#ccc";
@@ -98,8 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     emailInput.addEventListener("input", checkFormFilled);
     phoneInput.addEventListener("input", checkFormFilled);
 
-    
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", function (e) {
         e.preventDefault();
 
         if (
@@ -118,80 +114,84 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        msgBox.style.color = "green";
-        msgBox.innerText = "Service booked successfully!";
-        setTimeout(() => {
-            msgBox.innerText = "";
-        }, 3000);
 
-        const params = {
-        user_name: nameInput.value,
-        user_email: emailInput.value,  
-        user_phone: phoneInput.value,
-        total_amount: total,
-        service_list: cart.map(item => item.service).join(", ")
-    };
+        const services = cart.map(item => item.service + " (₹" + item.price + ")").join(", ");
 
-    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
-        .then(() => {
-            console.log("Email sent successfully");
-        })
-        .catch((error) => {
-            console.error("Email error:", error);
+        const templateParams = {
+            user_name: nameInput.value,
+            user_email: emailInput.value,
+            user_phone: phoneInput.value,
+            services: services,
+            total_amount: total,
+        
+        };
+        
+
+        emailjs.send(
+            "Laundary_serviceID",
+            "Laundary_confirm",
+            templateParams
+        ).then(() => {
+            msgBox.style.color = "green";
+            msgBox.innerText = "Booking successful! Email sent.";
+            setTimeout(()=>{
+                msgBox.innerText="";
+                form.reset();
+                cart = [];
+                total = 0;
+                updateTable();
+                checkFormFilled();
+            },3000);
+            
+        }).catch(() => {
+            msgBox.style.color = "red";
+            msgBox.innerText = "Failed to send email. Try again.";
         });
 
 
-        cart = [];
-        total = 0;
-        updateTable();
-
-        addButtons.forEach((btn) => {
-            btn.innerText = "Add Item";
-            btn.style.background = "#2e9fff";
-            btn.style.color = "#fff";
-        });
-
-        form.reset();
-        checkFormFilled();
     });
-});
+})
 
 
-document.querySelector(".sub-btn").addEventListener("click", function (event) {
-    event.preventDefault();
+
+document.addEventListener("DOMContentLoaded", () => {
+    const subBtn = document.querySelector(".sub-btn");
     const nameInput = document.querySelector(".name-input");
     const emailInput = document.querySelector(".email-input");
     const msg = document.querySelector(".sub-message");
 
-    const fullName = nameInput.value.trim();
-    const email = emailInput.value.trim();
+    subBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        const fullName = nameInput.value.trim();
+        const email = emailInput.value.trim();
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-    if (fullName === "") {
-        msg.innerText = "Please enter your full name.";
+        if (fullName === "") {
+            msg.innerText = "Please enter your full name.";
+            msg.style.color = "white";
+            return;
+        }
+
+        if (email === "" || !emailPattern.test(email)) {
+            msg.innerText = "Please enter a valid email address.";
+            msg.style.color = "white";
+            return;
+        }
+
+
+        msg.innerText = "Thank you for subscribing!";
         msg.style.color = "white";
-        return;
-    }
-
-    if (email === "" || !emailPattern.test(email)) {
-        msg.innerText = "Please enter a valid email address.";
-        msg.style.color = "white";
-        return;
-    }
-
-
-    msg.innerText = "Thank you for subscribing!";
-    msg.style.color = "white";
     
-    setTimeout(() => {
-        msg.innerText = "";
-    }, 3000);
+        setTimeout(() => {
+            msg.innerText = "";
+        }, 3000);
     
 
 
-    nameInput.value = "";
-    emailInput.value = "";
+        nameInput.value = "";
+        emailInput.value = "";
 
+    });
 });
