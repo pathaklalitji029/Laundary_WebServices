@@ -454,8 +454,11 @@ padding-right: 30px;
     font-size: 1rem;
     font-weight: 700;
 }
+
+
 .sub-btn:hover{
     background-color: #daf9f6;
+
 }
 .foot-container{
     height: 250px;
